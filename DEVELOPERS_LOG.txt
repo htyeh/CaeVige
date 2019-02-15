@@ -1,0 +1,52 @@
+17 Dec. 2018 - First entry
+  the main.py module including all util functions (encipher(), decipher() etc.) as well as brute_force method have been developed in the past week.
+
+  feature employed in the past week: passing arguments using argparse module
+
+  started developing crack_vigenère method using freq analysis
+  key seq -> Vigenère keyword
+  the encrypted message is sliced using the known key length, then passed into algorithm to calculate the best key (causing the most matches between the 6 most/least frequent letters of the English language & decrypt trial respectively)
+
+  project renamed as CaeVige
+
+20 Dec. 2018
+  crack_vigenère: errors with freq. analysis when key longer than 5-6 characters
+  combination of freq. analysis & percentage calculation (see brute_force)
+    approach: instead of returning one most suitable key for each position -> list of keys most - least suitable
+    cut lists to n first elements (default 3)
+    max. trials = n^key_len instead of key_strength^ken_len
+    for std. 85-bit * len=6 chars: max. trials 729 instead of 377149515625
+
+22 Dec. 2018
+  replaced manually given key_length with kasiski detection (function space_force)
+  approach of the kasiski_crack method:
+    1. Possible repeating seqs are searched in the encrypted message and a factor test is run for each of them.
+    2. Factors(key lengths, they are) are ranged according to their frequencies.
+    3. Apply space_force on each factors untill a key is found
+  result: tested with a random key_length generator, accuracy 9/10 bits
+
+1 Feb. 2019
+  AGENDA for en-/decrypting Chinese text confirmed, possible employing method:
+    1. unicode transcribing
+    2. char_to_pinyin dictionary
+
+2 Feb. 2019
+  AGENDA for CaeVige Graphical confirmed
+  shuffle alphabet & generate alphabet key before encrypting? (prevent brute force)
+3 Feb. 2019
+  characters -> bytes -> str(bytes) -> encryption -> decryption -> raw str representing bytes
+  convert raw byte string into bytes?
+
+10 Feb. 2019
+  deploying 3754 simplified characters as Chinese alphabet
+  changed keyword names for variables
+  deploying distinct functions for different writing systems (encipher -> la_encipher)
+
+11 Feb. 2019
+  added German corpus
+
+14 Feb. 2019
+  added differentiating traditional characters to the Chinese alphabet, renamed it zh_shuffled.txt
+
+15 Feb. 2019
+  started working on CVGUI, finished basic UI structure (input/output boxes, alphabet selection, key entries, encrypt/decrypt buttons)
