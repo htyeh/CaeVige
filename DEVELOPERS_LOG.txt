@@ -50,3 +50,27 @@
 
 15 Feb. 2019
   started working on CVGUI, finished basic UI structure (input/output boxes, alphabet selection, key entries, encrypt/decrypt buttons)
+16 Feb. 2019
+  improvement in UI structure:
+    copy output button and below_output_frame
+    frame in frame in order to deploy auto-gen key buttons (otherwise cannot align two widgets in same line while staying in the alph-key frame)
+17 Feb. 2019
+  UI optimization:
+    distance between sections in column 3 (column=2)
+    changes in language codes
+  function implementation: autokey, encrypt
+
+26 Feb. 2019
+  ideas on 1 funcdef while only changing alphabets for diff langs:
+    map key in GUI -> must manipulate alphabet -> not possible if alphabet defined in single funcs
+    alphabets are defined in the main "encryption" func accord. to alph. index
+    encipher/encipher_key funcs are defined within encryption to use defined alph.s accordingly
+27 Feb. 2019
+  potential problems with alphabet key:
+    can be dublicated/missing letters due to diff. keys -> making decryption impossible -> less secure
+    possible solution shuffle with random?
+  changed alphabet key to a second key -> only useful when two keys have diff. lengths
+  added decryption, copy_output
+  strip msg before encryption/decryption
+  added "about" information, read from file
+  added clear input box button

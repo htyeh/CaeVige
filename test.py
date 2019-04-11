@@ -3,8 +3,11 @@
 
 la_alphabet = "abcdefghijklmnopqrstuvwxyzäöüßABCDEFGHIJKLMNOPQRSTUVWXYZÄÖÜ !\"$%&'()*+,-./:;<=>?@[\]_"
 
-def encipher(string, n, alphabet):
-    
+def encipher(string, n, alphabet_index):
+    if alphabet_index == "1":
+        alphabet = "abcdefghijklmnopqrstuvwxyzäöüßABCDEFGHIJKLMNOPQRSTUVWXYZÄÖÜ !\"$%&'()*+,-./:;<=>?@[\]_"
+    else:
+        alphabet = "aqrLMNOPQRbcdefghistuvwxyzäöüßABCDEFGHIJKjklmnopSTUVWXYZÄÖÜ"
     res = ""
     for ltr in string:
         if ltr in alphabet:
@@ -23,18 +26,18 @@ def sublist(list, n):
         yield list[i:i+n]
 
 
-def encipher_key(string, key, alphabet):
+def encipher_key(string, key, alphabet_index):
     if len(string) <= len(key):
-        return "".join([enciphered for enciphered in map(encipher, string, key, alphabet)])
+        return "".join([enciphered for enciphered in map(encipher, string, key, alphabet_index)])
         # return "".join([encipher(char, n) for char in string for n in key])
     else:
         str_segs = sublist(string, len(key))
         res = ""
         for string in str_segs:
-            res += "".join([enciphered for enciphered in map(encipher, string, key, alphabet)])
+            res += "".join([enciphered for enciphered in map(encipher, string, key, alphabet_index)])
             # res += "".join([encipher(char, n) for char in string for n in key])
         return res
 
 
 sent = "this morning"
-print(encipher_key(sent, [1,5,1,7,9,8,4,2,3,6,1,8,9,4,6,3,6,2,7,0,7,1,1,2,6,3,7,9,3], la_alphabet))
+print(encipher_key(sent, [1,5,1,7,9,8], "111111"))  # length of index must equal to length of key
