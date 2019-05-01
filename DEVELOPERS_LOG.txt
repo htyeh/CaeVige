@@ -74,3 +74,6 @@
   strip msg before encryption/decryption
   added "about" information, read from file
   added clear input box button
+
+1 May 2019
+  added file translation (output to file) function to GUI, temporarily the output is displayed in output box
