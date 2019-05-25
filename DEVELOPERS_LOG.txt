@@ -79,3 +79,10 @@
   added file translation (output to file) function to GUI, temporarily the output is displayed in output box
 2 May 2019
   finished enc_file and dec_file functions
+
+25 May 2019
+  included enc/dec file functions to the interface
+  included exit button to the interface
+  added option to asterisk keys
+  added options to read key(s) from keyfiles
+  removed std85 alphabet from the interface
