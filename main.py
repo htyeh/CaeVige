@@ -110,6 +110,31 @@ def zh_decipher_key(string, key):
             res += "".join([deciphered for deciphered in map(zh_decipher, string, key)])
         return res
 
+# decipher & decipher_key copied from la_... in order to be imported by other files
+def decipher(string, n):
+    alphabet = "abcdefghijklmnopqrstuvwxyzäöüßABCDEFGHIJKLMNOPQRSTUVWXYZÄÖÜ !\"$%&'()*+,-./:;<=>?@[\]_"
+    res = ""
+    for ltr in string:
+        if ltr in alphabet:
+            decipher_index = alphabet.find(ltr)-n
+            if decipher_index < 0:
+                res += alphabet[decipher_index+len(alphabet)]
+            else:
+                res += alphabet[decipher_index]
+        else:
+            res += ltr
+    return res
+
+
+def decipher_key(string, key):
+    if len(string) <= len(key):
+        return "".join([deciphered for deciphered in map(la_decipher, string, key)])
+    else:
+        str_segs = sublist(string, len(key))
+        res = ""
+        for string in str_segs:
+            res += "".join([deciphered for deciphered in map(la_decipher, string, key)])
+        return res
 
 if __name__ == "__main__":
     key = [1, 2, 3]
