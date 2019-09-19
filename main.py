@@ -110,7 +110,7 @@ def zh_decipher_key(string, key):
             res += "".join([deciphered for deciphered in map(zh_decipher, string, key)])
         return res
 
-# decipher & decipher_key copied from la_... in order to be imported by other files
+# decipher & decipher_key same as la_decipher & la_decipher to be imported by kasiski_crack
 def decipher(string, n):
     alphabet = "abcdefghijklmnopqrstuvwxyzäöüßABCDEFGHIJKLMNOPQRSTUVWXYZÄÖÜ !\"$%&'()*+,-./:;<=>?@[\]_"
     res = ""
@@ -125,7 +125,6 @@ def decipher(string, n):
             res += ltr
     return res
 
-
 def decipher_key(string, key):
     if len(string) <= len(key):
         return "".join([deciphered for deciphered in map(la_decipher, string, key)])
@@ -134,6 +133,31 @@ def decipher_key(string, key):
         res = ""
         for string in str_segs:
             res += "".join([deciphered for deciphered in map(la_decipher, string, key)])
+        return res
+
+# to be imported by kasiski_for_latin+
+def decipher_137enhanced(string, n):
+    alphabet = "abcdefghijklmnñopqrstuvwxyzäöüßáàâéèêëíîïóôúùûçœæøåABCDEFGHIJKLMNÑOPQRSTUVWXYZÄÖÜÁÀÂÉÈÊËÍÎÏÓÔÚÙÛÇŒÆØÅ !\"$%&'()*+,-./:;<=>?@[\]_0123456789"
+    res = ""
+    for ltr in string:
+        if ltr in alphabet:
+            decipher_index = alphabet.find(ltr)-n
+            if decipher_index < 0:
+                res += alphabet[decipher_index+len(alphabet)]
+            else:
+                res += alphabet[decipher_index]
+        else:
+            res += ltr
+    return res
+
+def decipher_key_137enhanced(string, key):
+    if len(string) <= len(key):
+        return "".join([deciphered for deciphered in map(decipher_137enhanced, string, key)])
+    else:
+        str_segs = sublist(string, len(key))
+        res = ""
+        for string in str_segs:
+            res += "".join([deciphered for deciphered in map(decipher_137enhanced, string, key)])
         return res
 
 if __name__ == "__main__":
