@@ -7,6 +7,7 @@ import sys
 import os
 import time
 import argparse
+import datetime
 
 start_time = time.time()
 
@@ -30,7 +31,7 @@ if args.output:
     with open(args.output, "w") as output:
         output.write(deciphered_msg+"\n")
 else:
-    with open("deciphered.txt", "w") as output:
+    with open("deciphered " + datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S") + ".txt", "w") as output:
         output.write(deciphered_msg+"\n")
 
 end_time = time.time()

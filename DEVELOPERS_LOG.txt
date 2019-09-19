@@ -86,3 +86,6 @@
   added option to asterisk keys
   added options to read key(s) from keyfiles
   removed std85 alphabet from the interface
+
+19 Sep. 2019
+  use current date & time for enc./dec. files

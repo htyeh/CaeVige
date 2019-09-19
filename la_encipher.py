@@ -7,6 +7,7 @@ import sys
 import os
 import time
 import argparse
+import datetime
 
 start_time = time.time()
 
@@ -28,7 +29,7 @@ if args.output:
     with open(args.output,"w") as output:
         output.write(enciphered_msg+"\n")
 else:
-    with open("enciphered.txt","w") as output:
+    with open("enciphered " + datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S") + ".txt", "w") as output:
         output.write(enciphered_msg+"\n")
 
 end_time = time.time()
